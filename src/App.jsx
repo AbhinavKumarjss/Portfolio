@@ -27,7 +27,7 @@ function App() {
           !HeightGreater && 
         
       <div style={{padding:'0px'}}id='app'>
-        {!isMobile &&HeightGreater && <MouseFollower>
+        {!isMobile && <MouseFollower>
           <div style={{ mixBlendMode: 'difference',pointerEvents:'none' }} id='circle-MouseFollower'></div>
         </MouseFollower>}
        
