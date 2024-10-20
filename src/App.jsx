@@ -13,15 +13,21 @@ import OverlayAboutMe from './Components/Aboutme/OverlayAboutMe';
 
 function App() {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-
+  const HeightGreater = useMediaQuery({ query: '(max-height: 400px)' });
   useEffect(() => {
    
   })
   return (
+    
     <>
-   
+        {HeightGreater && 
+        <h3>Aspect Ratio not Appropiate</h3>
+        }
+        {
+          !HeightGreater && 
+        
       <div style={{padding:'0px'}}id='app'>
-        {!isMobile && <MouseFollower>
+        {!isMobile &&HeightGreater && <MouseFollower>
           <div style={{ mixBlendMode: 'difference',pointerEvents:'none' }} id='circle-MouseFollower'></div>
         </MouseFollower>}
        
@@ -38,8 +44,9 @@ function App() {
         </div>
      
       </div>
-     
+     }
     </>
+    
   )
 }
 
