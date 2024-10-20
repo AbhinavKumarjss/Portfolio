@@ -46,8 +46,7 @@ export default function Projects() {
                                 A Video Watching Web App <br />
                                 You can watch movie from online <br />
                                 source with your friends in realtime <br />
-                                Made with Socket.io <br />
-                                Project is on my github
+                                Made with Socket.io 
                             </div>
 
                         </div>
