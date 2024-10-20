@@ -23,10 +23,21 @@
         
     }
     a{
-        line-height: 110px;
+         line-height: 110px;
+         margin-left: 15vw;
         padding: 1px;
-      
-        font-size: 132px;
+        font-size: 110px;
+        @media screen and (max-width: 768px){
+            font-size: 13vw;
+            line-height: 10vh;
+            
+        letter-spacing: -3px;
+        }
+        h1 {
+          
+        margin-left: 0px;
+        }
+       
     }
     h1 {
         line-height: 110px;
@@ -113,12 +124,13 @@ display: none;
   
 
     position: relative;
-    text-align: center;
+    
    
   }
   #Skills-section-flex-item-heading{
     pointer-events: all;
     overflow: hidden;
+    position: relative;
    
   }
 #Skills-section-flex-item-heading:hover + #orange-world {
