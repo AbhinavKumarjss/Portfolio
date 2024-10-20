@@ -1,0 +1,74 @@
+#AboutMe-section {
+    position: relative;
+    
+    background-color: #0D0D0D;
+    
+    height: 100vh;
+    width: 100vw;
+}
+#AboutMe-section-flex-item{
+    width: 70vw;
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+#AboutMe-section-heading {
+    margin-top: 100px;
+    letter-spacing: 7px;
+    padding: 20px;
+   @media screen and (max-width: 768px){
+        font-size: 2vw;
+    }
+    
+   
+}
+
+#AboutMe-section-flex {
+    color: #B7AB98;
+    
+
+    display: flex;
+    flex-direction: column;
+
+
+}
+.AboutMe-hidden{
+    position: relative;
+    color: #0D0D0D;
+    clip-path: url("#circle-MouseFollower");
+    z-index: 3;
+    font-size: 4.2vw;
+    @media screen and (max-width: 768px){
+        color: #eb694c;
+        font-size: 7vw;
+    }
+}
+#AboutMe-heading{
+    position: relative;
+    color: #eb5939;
+     z-index: 2;
+     font-size: 4.2vw;
+     @media screen and (max-width: 768px){
+        font-size: 9vw;
+        color: #eb694c;
+    }
+}
+
+#overlay-aboutme{
+    position:absolute;
+    width: 70vw;
+    right: -5vw;
+    height: 100vh;
+    z-index: 4;
+    
+    @media screen and (max-width: 768px){
+        width: 100vw;
+        z-index: 1;
+        opacity: 0.5;
+        margin-top: 200px;
+    }
+    *{
+        pointer-events: none !important;
+    }
+    pointer-events: none;
+}

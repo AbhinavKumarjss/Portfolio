@@ -1,0 +1,38 @@
+#circle-MouseFollower {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  /* Horizontally centers the element */
+  align-items: center;
+  background-color: #eb5939;
+  pointer-events: none;
+  z-index: 3;
+}
+
+#outer-GsapMagnetic {
+  padding: 10px;
+  display: inline-block;
+  margin: auto;
+
+}
+
+#flex-GsapMagnetic {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+#Scrolling-text{
+  display:inline;
+ 
+  pointer-events: none;
+  --scroll-text-percent:100%;
+  clip-path: inset(0 var(--scroll-text-percent) 0 0);
+}

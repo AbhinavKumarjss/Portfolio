@@ -1,0 +1,26 @@
+#Hero-area-block{
+ background-color: rgb(19, 19, 19);
+  position: relative;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+  top:0;
+}
+#Hero-ui-area{
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  z-index: 1;
+}
+  #Hero-section{ 
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    
+   
+      height: 100vh;
+    width: 100%;
+   
+  }

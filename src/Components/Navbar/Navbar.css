@@ -1,0 +1,61 @@
+#navbar {
+    position: absolute;
+    display: inline-block;
+
+}
+
+#navbar-links {
+    position: fixed;
+    right: 60px;
+    top:20px;
+ 
+    mix-blend-mode: difference;
+    list-style: none;
+    text-align: end;
+    z-index: 100;
+    @media screen and (max-width: 768px){
+        right: 20px;
+        top:10px;
+    }
+}
+#navbar-link-container{
+ 
+    overflow: hidden;
+    height: 18px;
+    margin: 12px;
+    min-width: fit-content;
+}
+#navbar-link-conatiner-links {
+  
+    position: relative;
+    transition: all 0.35s;
+    color: #ccc3b5;
+}
+
+#navbar-link-container:hover > #navbar-link-conatiner-links{
+    transform: translateY(-20px);
+}
+
+a {
+    font-family: Nunito Sans, sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+   color: inherit;
+   font-size: 0.9rem;
+}
+#navbar-MagneticFlex{
+    z-index: 100;
+    display: flex;
+    position: fixed;
+    bottom: 60px;
+    left:60px;
+    flex-direction: column;
+    mix-blend-mode: difference;
+    justify-content: center;
+    align-items: center;
+    height:100px;
+    @media screen and (max-width: 768px){
+        bottom: 30px;
+        left:10px;
+    }
+}

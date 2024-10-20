@@ -1,0 +1,132 @@
+#Skills-section {
+    background-color: rgb(19, 19, 19);
+    pointer-events: none;
+    height: 100vh;
+    width: 100vw;
+    @media screen and (max-width: 768px){
+      height: 80vh;
+  }
+}
+
+#Skills-section-flex-item {
+    position: relative;
+    width: 100vw;
+
+    display: flex;
+    border-top: 1px solid #4a453e5f;
+    text-transform: uppercase;
+  
+    h2 {
+
+        line-height: 50px;
+        padding: 1px;
+        
+    }
+    a{
+        line-height: 110px;
+        padding: 1px;
+      
+        font-size: 132px;
+    }
+    h1 {
+        line-height: 110px;
+       
+        padding: 1px;
+        margin-left: 15vw;
+        font-size: 110px;
+        @media screen and (max-width: 768px){
+            font-size: 13vw;
+            line-height: 10vh;
+            
+        letter-spacing: -3px;
+        }
+       
+       
+    }
+
+
+}
+
+#Skills-section-heading {
+    margin-bottom: 10px;
+    margin-top: 100px;
+    letter-spacing: 7px;
+    padding: 20px;
+    margin-left: 17vw;
+    @media screen and (max-width: 768px){
+      font-size: 2vw;
+  }
+}
+
+#Skills-section-flex {
+    color: #B7AB98;
+
+
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+#orange-world {
+    pointer-events: none;
+    position: absolute;
+   
+    align-items: center;
+    display: flex;
+    top: 50%;
+    overflow: hidden;
+    background-color: #eb5939;
+   
+    width: 100%;
+    height: 0px ;
+    color: #000000; 
+    transition: all 0.31s;
+    @media screen and (max-width: 768px){
+      
+      background-color:  #eb694c;
+    }
+    @media screen and (max-width: 768px){
+       h1{
+display: none;
+       } 
+    }
+    #o-flex{
+      @media screen and (max-width: 768px){
+        text-align: center;
+        
+      }
+        text-transform: uppercase;
+        height: 100%;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 12px;
+      margin: 20px;
+      align-items: center;
+      letter-spacing: 1px;
+    }
+  }
+  
+#orange-world-heading {
+  
+
+    position: relative;
+    text-align: center;
+   
+  }
+  #Skills-section-flex-item-heading{
+    pointer-events: all;
+    overflow: hidden;
+   
+  }
+#Skills-section-flex-item-heading:hover + #orange-world {
+    
+        top: 0%;
+        height: 100% ;
+        background-color: #eb5939;
+   
+  
+
+}
