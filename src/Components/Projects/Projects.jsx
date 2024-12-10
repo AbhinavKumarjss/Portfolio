@@ -38,7 +38,7 @@ export default function Projects() {
                 <div id='Projects-item-container'>
 
                     <div id="Skills-section-flex-item">
-                        <a target="_blank" href='https://watchtogether-yrqt.onrender.com/' id='Skills-section-flex-item-heading'><h1><div>WATCH TOGETHER</div></h1></a>
+                        <a target="_blank" href='https://watch2gether-az7v.onrender.com/' id='Skills-section-flex-item-heading'><h1><div>WATCH TOGETHER</div></h1></a>
 
                         <div id='orange-world'>
                             <h1 id='orange-world-heading'>Watch</h1>
