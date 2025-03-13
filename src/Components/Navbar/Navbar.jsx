@@ -41,8 +41,8 @@ requestAnimationFrame(raf);
           <li id='navbar-link-conatiner-links' ><a href="#Projects-section" onClick={()=>{ lenis.scrollTo(document.querySelector('#Projects-section'))}}>PROJECTS</a></li>
         </div>
         <div id='navbar-link-container'>
-          <li id='navbar-link-conatiner-links' ><a href="https://drive.google.com/file/d/1HnMsmQobru5CVpPqG7sYD9yBiShWlzHF/view" onClick={()=>{ lenis.scrollTo(document.querySelector('#Projects-section'))}}>RESUME</a></li>
-          <li id='navbar-link-conatiner-links' ><a href="https://drive.google.com/file/d/1HnMsmQobru5CVpPqG7sYD9yBiShWlzHF/view" onClick={()=>{ lenis.scrollTo(document.querySelector('#Projects-section'))}}>RESUME</a></li>
+          <li id='navbar-link-conatiner-links' ><a href="https://drive.google.com/file/d/1HnMsmQobru5CVpPqG7sYD9yBiShWlzHF/view" target="_blank" >RESUME</a></li>
+          <li id='navbar-link-conatiner-links' ><a href="https://drive.google.com/file/d/1HnMsmQobru5CVpPqG7sYD9yBiShWlzHF/view" target="_blank">RESUME</a></li>
         </div>
    
       </ul>
