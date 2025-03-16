@@ -3,25 +3,14 @@ import GsapMagnetic from '../../Utility/GsapMagnetic'
 import "./Navbar.css"
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Lenis from 'lenis'
+import { scrollTo } from '../../Utility/LenisInit'
+
 export default function Navbar() {
   gsap.registerPlugin(ScrollTrigger);
 
-  const lenis = new Lenis({
-    duration: 1.2,  // Increase duration for smoother scroll
-    easing: (t) =>t*(2-t), // A custom easing function (ease-in-out)
-    smooth: true,
-    smoothWheel: true,
-    lerp:0.1,
-    
-});
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
-
+  const handleScroll = (selector) => {
+    scrollTo(selector);
+  };
   
   return (
     <div id='navbar' >
@@ -29,16 +18,16 @@ requestAnimationFrame(raf);
       <ul id='navbar-links' className='cursorzoom CursorMask' cursorscale={0}>
         {/* <li id="navbar-link-hidden"className='cursorzoom CursorMask' cursorscale={0}>About Me</li> */}
         <div id='navbar-link-container'>
-          <li id='navbar-link-conatiner-links'><a href="#AboutMe-section" onClick={()=>{ lenis.scrollTo(document.querySelector('#AboutMe-section'))}}>ABOUT</a></li>
-          <li id='navbar-link-conatiner-links' ><a href="#AboutMe-section" onClick={()=>{ lenis.scrollTo(document.querySelector('#AboutMe-section'))}}>ABOUT</a></li>
+          <li id='navbar-link-conatiner-links'><a href="#AboutMe-section" onClick={(e) => { e.preventDefault(); handleScroll('#AboutMe-section'); }}>ABOUT</a></li>
+          <li id='navbar-link-conatiner-links' ><a href="#AboutMe-section" onClick={(e) => { e.preventDefault(); handleScroll('#AboutMe-section'); }}>ABOUT</a></li>
         </div>
         <div id='navbar-link-container'>
-          <li id='navbar-link-conatiner-links' ><a href="#Skills-section" onClick={()=>{ lenis.scrollTo(document.querySelector('#Skills-section'))}}>SKILLS</a></li>
-          <li id='navbar-link-conatiner-links' ><a href="#Skills-section" onClick={()=>{ lenis.scrollTo(document.querySelector('#Skills-section'))}}>SKILLS</a></li>
+          <li id='navbar-link-conatiner-links' ><a href="#Skills-section" onClick={(e) => { e.preventDefault(); handleScroll('#Skills-section'); }}>SKILLS</a></li>
+          <li id='navbar-link-conatiner-links' ><a href="#Skills-section" onClick={(e) => { e.preventDefault(); handleScroll('#Skills-section'); }}>SKILLS</a></li>
         </div>
         <div id='navbar-link-container'>
-          <li id='navbar-link-conatiner-links' ><a href="#Projects-section" onClick={()=>{ lenis.scrollTo(document.querySelector('#Projects-section'))}}>PROJECTS</a></li>
-          <li id='navbar-link-conatiner-links' ><a href="#Projects-section" onClick={()=>{ lenis.scrollTo(document.querySelector('#Projects-section'))}}>PROJECTS</a></li>
+          <li id='navbar-link-conatiner-links' ><a href="#Projects-section" onClick={(e) => { e.preventDefault(); handleScroll('#Projects-section'); }}>PROJECTS</a></li>
+          <li id='navbar-link-conatiner-links' ><a href="#Projects-section" onClick={(e) => { e.preventDefault(); handleScroll('#Projects-section'); }}>PROJECTS</a></li>
         </div>
         <div id='navbar-link-container'>
           <li id='navbar-link-conatiner-links' ><a href="https://drive.google.com/file/d/1HnMsmQobru5CVpPqG7sYD9yBiShWlzHF/view" target="_blank" >RESUME</a></li>

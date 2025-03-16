@@ -47,13 +47,22 @@ export default function GsapMagnetic({children}) {
          if(isMobile){
            return;
          }
-       Magnetic.current.addEventListener('mousemove',MouseMove)
-       Magnetic.current.addEventListener('mouseover',MouseMove)
-       Magnetic.current.addEventListener('mouseleave',MouseLeave)
-         return ()=>{
-              Magnetic.current.removeEventListener('mousemove',MouseMove)
-              Magnetic.current.removeEventListener('mouseleave',MouseLeave)
+         
+       // Only add listeners if the ref exists
+       if (Magnetic.current) {
+         Magnetic.current.addEventListener('mousemove', MouseMove);
+         Magnetic.current.addEventListener('mouseover', MouseMove);
+         Magnetic.current.addEventListener('mouseleave', MouseLeave);
+       }
+       
+       return () => {
+         // Check if ref still exists before removing listeners
+         if (Magnetic.current) {
+           Magnetic.current.removeEventListener('mousemove', MouseMove);
+           Magnetic.current.removeEventListener('mouseover', MouseMove);
+           Magnetic.current.removeEventListener('mouseleave', MouseLeave);
          }
+       }
     },[])
   return (
  React.cloneElement(children,{ref:Magnetic,style:{transform:'all 0.1s'}})
