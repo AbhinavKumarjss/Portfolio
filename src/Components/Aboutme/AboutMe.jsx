@@ -276,8 +276,8 @@ const AboutMe = () => {
           
           <div className="aboutme-text" ref={textRef}>
             <div className="aboutme-bio">
-              <p>Hello! I'm <span className="highlight">Abhinav Kumar</span>, a passionate Computer Science student with a focus on web development and interactive digital experiences.</p>
-              <p>Currently pursuing my Bachelor's degree in Computer Science, I've been developing my skills in JavaScript, React, and modern web technologies through coursework, personal projects, and a summer internship. I'm particularly interested in front-end development and creating engaging user interfaces.</p>
+              <p>Hello! I'm <span className="highlight">Abhinav Kumar</span>, a passionate Computer Science student with a focus on backend and Ai development.</p>
+              <p>Currently pursuing my Bachelor's degree in Computer Science, I've been developing my skills in JavaScript, Go , SpringBoot, React, and modern web technologies through coursework, personal projects. I'm particularly interested in back-end development and Ai development.</p>
               <p>I believe in continuous learning and am excited to apply my technical knowledge and creative problem-solving skills to real-world challenges as I begin my journey in the tech industry.</p>
             </div>
             

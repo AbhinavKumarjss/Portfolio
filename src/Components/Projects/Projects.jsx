@@ -98,7 +98,7 @@ const Projects = () => {
       position: "Freelance Web Developer",
       company: "Self-employed",
       period: "2021 - Present",
-      description: "Building portfolio by creating websites for small local businesses and student organizations. Developing skills in client communication, project management, and delivering solutions that meet client needs."
+      description: "Building fullstack web applications for startups. Developing skills in backend development, frontend development, and database management."
     }
   ];
 
