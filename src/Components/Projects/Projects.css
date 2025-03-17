@@ -55,9 +55,9 @@
 /* Project Cards */
 .project-card {
     flex: 0 0 auto;
-    width: 80vw;
-    max-width: 900px;
-    height: 450px;
+    width: min(80vw, 900px);
+    height: auto;
+    min-height: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,9 +71,8 @@
 }
 
 .project-card.featured {
-    width: 90vw;
-    max-width: 1000px;
-    height: 500px;
+    width: min(90vw, 1000px);
+    min-height: 500px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
     position: relative;
     z-index: 5;
@@ -206,6 +205,8 @@
     display: flex;
     gap: 20px;
     margin-top: auto;
+    z-index: 10;
+    position: relative;
 }
 
 .project-card-link {
@@ -223,6 +224,13 @@
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+
+.project-card-link:focus-visible {
+    box-shadow: 0 0 0 3px #eb5939;
 }
 
 .project-card-link::before {
@@ -236,24 +244,81 @@
     transform: scale(0);
     transition: transform 0.3s ease;
     border-radius: 50%;
+    pointer-events: none;
 }
 
-.project-card-link:hover {
+.project-card-link:hover,
+.project-card-link:focus-visible {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     color: #fff;
 }
 
-.project-card-link:hover::before {
+.project-card-link:active {
+    transform: translateY(-2px);
+}
+
+.project-card-link:hover::before,
+.project-card-link:focus-visible::before {
     transform: scale(1);
 }
 
-.project-card-link.github:hover {
+.project-card-link.github {
+    background: rgba(51, 51, 51, 0.1);
+}
+
+.project-card-link.github:hover,
+.project-card-link.github:focus-visible {
     background: #333;
 }
 
-.project-card-link.demo:hover {
+.project-card-link.demo {
+    background: rgba(235, 89, 57, 0.1);
+}
+
+.project-card-link.demo:hover,
+.project-card-link.demo:focus-visible {
     background: #eb5939;
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .project-card-link {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .project-card-link:active {
+        transform: scale(0.95);
+    }
+    
+    .project-card-link.github:active {
+        background: #333;
+    }
+    
+    .project-card-link.demo:active {
+        background: #eb5939;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .project-card-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .project-card-link {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .project-card-links {
+        gap: 12px;
+    }
 }
 
 .project-card-featured {
@@ -453,15 +518,17 @@
 /* Adjust spacing for responsive layout */
 @media (max-width: 1200px) {
     .project-card {
-        width: 85vw;
-        max-width: 800px;
-        height: 420px;
+        width: min(85vw, 800px);
+        min-height: 420px;
     }
     
     .project-card.featured {
-        width: 90vw;
-        max-width: 900px;
-        height: 460px;
+        width: min(90vw, 900px);
+        min-height: 460px;
+    }
+    
+    .project-card-title {
+        font-size: 2.2rem;
     }
     
     .timeline-container {
@@ -471,17 +538,25 @@
 
 @media (max-width: 992px) {
     .project-card-info {
-        width: 60%;
-        padding: 30px;
+        width: 65%;
+        padding: 25px;
     }
     
     .project-card-overlay {
         background: linear-gradient(
             to right,
             rgba(13, 13, 13, 0.95) 0%,
-            rgba(13, 13, 13, 0.85) 40%,
+            rgba(13, 13, 13, 0.85) 45%,
             rgba(13, 13, 13, 0.2) 100%
         );
+    }
+    
+    .project-card-title {
+        font-size: 2rem;
+    }
+    
+    .project-card-description {
+        font-size: 0.9rem;
     }
     
     .timeline-item {
@@ -513,15 +588,14 @@
 }
 
 @media (max-width: 768px) {
-    /* Project cards adjustments for medium screens */
     .project-card {
-        width: 90vw;
-        height: 400px;
+        width: min(90vw, 600px);
+        min-height: 400px;
     }
     
     .project-card.featured {
-        width: 95vw;
-        height: 440px;
+        width: min(95vw, 650px);
+        min-height: 440px;
     }
     
     .project-card-inner {
@@ -530,14 +604,14 @@
     
     .project-card-info {
         width: 100%;
-        padding: 25px;
-        padding-bottom: 30px;
+        padding: 20px;
+        padding-bottom: 25px;
         align-items: center;
         text-align: center;
     }
     
     .project-card-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: 15px;
     }
     
@@ -550,7 +624,7 @@
         background: linear-gradient(
             to top,
             rgba(13, 13, 13, 1) 0%,
-            rgba(13, 13, 13, 0.8) 60%,
+            rgba(13, 13, 13, 0.85) 60%,
             rgba(13, 13, 13, 0.3) 100%
         );
     }
@@ -562,6 +636,15 @@
     
     .projects-grid {
         gap: 30px;
+        padding: 30px 0 50px;
+    }
+    
+    .project-card-tech {
+        justify-content: center;
+    }
+    
+    .project-card-links {
+        justify-content: center;
     }
     
     /* Experience timeline adjustments */
@@ -595,27 +678,26 @@
 }
 
 @media (max-width: 576px) {
-    /* Project cards adjustments for small screens */
     .project-card,
     .project-card.featured {
-        height: auto;
-        min-height: 470px;
+        width: min(95vw, 450px);
+        min-height: 380px;
     }
     
     .projects-header {
-        padding: 0 15px 30px;
+        padding: 60px 15px 30px;
     }
     
     .projects-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     .project-card-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
     
     .project-card-info {
-        padding: 20px;
+        padding: 15px;
     }
     
     .project-tech-icon {
@@ -629,7 +711,7 @@
     }
     
     .project-card-description {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         margin-bottom: 20px;
         -webkit-line-clamp: 3;
         display: -webkit-box;
@@ -642,14 +724,18 @@
     }
     
     .project-card-link {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
     }
     
     .project-filter-btn {
         font-size: 0.85rem;
-        padding: 6px 12px;
-        margin: 0 5px 10px;
+        padding: 8px 16px;
+    }
+    
+    .projects-grid {
+        gap: 25px;
+        padding: 25px 0 40px;
     }
     
     /* Experience timeline adjustments for small screens */
@@ -683,11 +769,12 @@
 @media (max-width: 375px) {
     .project-card,
     .project-card.featured {
-        min-height: 450px;
+        width: min(98vw, 350px);
+        min-height: 350px;
     }
     
     .project-card-title {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
     
     .project-card-tech {
@@ -695,7 +782,7 @@
     }
     
     .project-card-info {
-        padding: 15px;
+        padding: 12px;
     }
     
     .timeline-date {
@@ -722,16 +809,25 @@
     
     .project-card,
     .project-card.featured {
-        height: 85vh;
+        min-height: 85vh;
         max-height: 400px;
     }
     
-    .timeline-container {
-        padding-bottom: 40px;
+    .project-card-description {
+        max-height: 80px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        padding-right: 5px;
     }
     
-    .timeline-item {
-        margin-bottom: 20px;
+    .project-card-description::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .project-card-description::-webkit-scrollbar-thumb {
+        background: rgba(235, 89, 57, 0.7);
+        border-radius: 4px;
     }
     
     .timeline-date {
@@ -1230,21 +1326,33 @@
 
 /* Custom scrollbar for side scrolling - added to match orange theme */
 .projects-grid-container::-webkit-scrollbar {
-    height: 6px;
+    height: 8px;
 }
 
 .projects-grid-container::-webkit-scrollbar-track {
     background: rgba(235, 89, 57, 0.1);
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
 .projects-grid-container::-webkit-scrollbar-thumb {
     background: #eb5939;
-    border-radius: 3px;
+    border-radius: 4px;
+    border: 2px solid rgba(13, 13, 13, 0.8);
 }
 
 /* For Firefox */
 .projects-grid-container {
     scrollbar-width: thin;
     scrollbar-color: #eb5939 rgba(235, 89, 57, 0.1);
+}
+
+/* Add smooth transitions for responsive changes */
+.project-card,
+.project-card-inner,
+.project-card-info,
+.project-card-title,
+.project-card-description,
+.project-tech-icon,
+.project-card-link {
+    transition: all 0.3s ease-in-out;
 }

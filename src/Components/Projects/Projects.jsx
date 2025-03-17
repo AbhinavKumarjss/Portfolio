@@ -24,8 +24,8 @@ const Projects = () => {
       title: "Portfolio Website",
       description: "A personal portfolio website showcasing my projects and skills with smooth animations and interactive elements. Built with React, GSAP, and modern CSS techniques.",
       image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      link: "https://yourportfolio.com",
-      github: "https://github.com/yourusername/portfolio",
+      link: "https://portfolio-zjv0.onrender.com/",
+      github: "https://github.com/AbhinavKumarjss/Portfolio",
       category: "web",
       featured: true,
       technologies: [
@@ -105,20 +105,7 @@ const Projects = () => {
 
   // Experience data
   const experienceData = [
-    {
-      id: 1,
-      position: "Computer Science Student",
-      company: "State University",
-      period: "2020 - Present",
-      description: "Currently pursuing a Bachelor's degree in Computer Science with a focus on web development and user experience. Maintaining a 3.8 GPA while participating in coding clubs and hackathons."
-    },
-    {
-      id: 2,
-      position: "Web Development Intern",
-      company: "Local Tech Startup",
-      period: "Summer 2022",
-      description: "Assisted in developing responsive websites using React.js during a 3-month internship. Gained hands-on experience with modern development workflows and collaborated with designers to implement UI components."
-    },
+  
     {
       id: 3,
       position: "Freelance Web Developer",
@@ -369,7 +356,7 @@ const Projects = () => {
         return -(gridWidth - containerWidth + startBuffer + endBuffer);
       };
       
-      // Update the ScrollTrigger configuration
+      // Modify the ScrollTrigger configuration
       const horizontalScroll = gsap.to(projectsGrid, {
         x: calculateDistance,
         ease: isSmallMobile ? "power1.out" : "none",
@@ -377,9 +364,15 @@ const Projects = () => {
           trigger: projectsSectionRef.current,
           start: isMobile ? (isLandscape ? "bottom 90%" : "bottom 85%") : "bottom 100%",
           end: () => {
-            // Extend the scrolling distance based on screen size to ensure full viewing
-            const multiplier = isSmallMobile ? 0.7 : (isMobile ? 0.8 : 1);
-            return `+=${projectsGrid.offsetWidth * multiplier + window.innerWidth * 0.2}`;
+            // Calculate the end point to ensure the last card is fully visible
+            const gridWidth = projectsGrid.offsetWidth;
+            const containerWidth = projectsGridContainer.offsetWidth;
+            const lastCardWidth = projectsGrid.lastElementChild.offsetWidth;
+            const endBuffer = containerWidth - lastCardWidth;
+            
+            // Adjust the scroll distance based on screen size
+            const multiplier = isSmallMobile ? 0.8 : (isMobile ? 0.9 : 1);
+            return `+=${(gridWidth - endBuffer) * multiplier}`;
           },
           pin: true,
           pinSpacing: true,
@@ -866,6 +859,13 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="project-card-link github"
                         aria-label="GitHub repository"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (!project.github) {
+                            e.preventDefault();
+                            alert('GitHub repository link is not available.');
+                          }
+                        }}
                       >
                         <FaGithub />
                       </a>
@@ -875,6 +875,13 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="project-card-link demo"
                         aria-label="Live demo"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (!project.link) {
+                            e.preventDefault();
+                            alert('Live demo link is not available.');
+                          }
+                        }}
                       >
                         <FaExternalLinkAlt />
                       </a>
