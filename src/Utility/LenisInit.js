@@ -113,12 +113,32 @@ export const initLenis = () => {
   // Prevent lag/jank
   gsap.ticker.lagSmoothing(0);
 
-  // Define resize handler (in module scope to be used by destroyLenis)
-  updateLenisOnResize = () => {
-    if (lenisInstance) {
-      lenisInstance.update();
-    }
+  // Debounce function
+  const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
   };
+
+  // Define resize handler (in module scope to be used by destroyLenis)
+  updateLenisOnResize = debounce(() => {
+    if (lenisInstance && typeof lenisInstance.update === 'function') {
+      try {
+        lenisInstance.update();
+      } catch (error) {
+        console.warn('Error updating Lenis instance:', error);
+        // If update fails, try reinitializing Lenis
+        destroyLenis();
+        initLenis();
+      }
+    }
+  }, 150); // 150ms debounce
   
   window.addEventListener('resize', updateLenisOnResize);
 

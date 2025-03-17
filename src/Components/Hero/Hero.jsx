@@ -259,19 +259,26 @@ export default function Hero() {
     function createParticles() {
       particles = [];
       
-      // Dynamic particle count based on screen size and performance profile
-      const baseCount = Math.floor(canvas.width / 15);
+      // Adjust base count calculation for better density on small screens
+      const minParticles = 50; // Minimum number of particles for small screens
+      const baseCount = Math.max(
+        minParticles,
+        Math.floor((canvas.width * canvas.height) / 10000) // Adjust density based on area
+      );
       const particleCount = Math.floor(baseCount * deviceProfile.particleMultiplier);
       
       // Create several cluster centers
       const clusterCount = deviceProfile.clusterCount;
       const clusters = [];
       
+      // Adjust cluster radius based on screen size
+      const maxRadius = Math.min(canvas.width, canvas.height) / 3;
+      
       for (let i = 0; i < clusterCount; i++) {
         clusters.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: Math.random() * 200 + 100
+          radius: Math.random() * maxRadius + (maxRadius / 2)
         });
       }
       
@@ -281,13 +288,13 @@ export default function Hero() {
       const cellHeight = canvas.height / gridSize;
       
       for (let i = 0; i < particleCount; i++) {
-        // Decide on placement strategy for this particle (33% chance for each type)
-        const placementType = Math.floor(Math.random() * 3);
+        // Adjust placement strategy distribution for better density
+        const placementType = Math.random() < 0.4 ? 0 : (Math.random() < 0.7 ? 1 : 2);
         
         let x, y;
         
         if (placementType === 0) {
-          // Cluster-based placement
+          // Cluster-based placement - increased probability
           const cluster = clusters[Math.floor(Math.random() * clusters.length)];
           const angle = Math.random() * Math.PI * 2;
           const distance = Math.random() * cluster.radius;
@@ -295,36 +302,38 @@ export default function Hero() {
           y = cluster.y + Math.sin(angle) * distance;
         } 
         else if (placementType === 1) {
-          // Grid-based placement with jitter
+          // Grid-based placement with adjusted jitter
           const col = i % gridSize;
           const row = Math.floor(i / gridSize);
-          x = col * cellWidth + cellWidth * (0.3 + Math.random() * 0.4); // 30%-70% of cell width
-          y = row * cellHeight + cellHeight * (0.3 + Math.random() * 0.4); // 30%-70% of cell height
+          x = col * cellWidth + cellWidth * (0.2 + Math.random() * 0.6); // More spread
+          y = row * cellHeight + cellHeight * (0.2 + Math.random() * 0.6);
         }
         else {
-          // Some particles along sine wave patterns
+          // Wave pattern with adjusted amplitude
           x = Math.random() * canvas.width;
-          y = canvas.height / 2 + Math.sin(x / 100) * (canvas.height / 4);
-          // Add some randomness
-          y += (Math.random() - 0.5) * 50;
+          const amplitude = canvas.height / 3;
+          y = canvas.height / 2 + Math.sin(x / (canvas.width / 8)) * amplitude;
+          y += (Math.random() - 0.5) * (amplitude / 2);
         }
         
         // Ensure particles are within canvas bounds
         x = Math.max(0, Math.min(canvas.width, x));
         y = Math.max(0, Math.min(canvas.height, y));
         
-        // Use device profile for particle properties
+        // Adjust particle properties for better visibility on mobile
         const { min, max } = deviceProfile.particleSize;
+        const baseOpacity = isMobile ? 0.6 : 0.4; // Higher base opacity for mobile
+        
         particles.push({
           x: x,
           y: y,
           size: Math.random() * (max - min) + min,
           speedX: (Math.random() - 0.5) * deviceProfile.speedMultiplier,
           speedY: (Math.random() - 0.5) * deviceProfile.speedMultiplier,
-          opacity: Math.random() * 0.7 + 0.3,
+          opacity: Math.random() * 0.4 + baseOpacity, // Adjusted opacity range
           color: i % 5 === 0 
-            ? `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1})` // White particles
-            : `rgba(235, 89, 57, ${Math.random() * 0.5 + 0.1})`, // Theme color
+            ? `rgba(255, 255, 255, ${Math.random() * 0.4 + baseOpacity})` // Brighter white particles
+            : `rgba(235, 89, 57, ${Math.random() * 0.6 + baseOpacity})`, // Brighter theme color
           pulseSpeed: Math.random() * 0.01 * deviceProfile.speedMultiplier + 0.005,
           pulseFactor: 0,
           pulseDirection: 1
@@ -338,6 +347,7 @@ export default function Hero() {
       const oldWidth = canvas.width;
       const oldHeight = canvas.height;
       
+      // Update canvas dimensions to match window size
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       
@@ -348,36 +358,47 @@ export default function Hero() {
       
       // Update device profile
       deviceProfile = {
-        particleMultiplier: newIsLowPerfDevice ? 0.3 : (newIsTablet ? 0.6 : 1),
-        particleSize: newIsMobile ? { min: 0.5, max: 2 } : (newIsTablet ? { min: 0.5, max: 2.5 } : { min: 0.5, max: 3 }),
+        particleMultiplier: newIsLowPerfDevice ? 0.5 : (newIsTablet ? 0.7 : 1), // Increased multipliers
+        particleSize: newIsMobile ? { min: 1, max: 3 } : (newIsTablet ? { min: 0.8, max: 2.8 } : { min: 0.5, max: 3 }), // Larger particles on mobile
         speedMultiplier: newIsLowPerfDevice ? 0.4 : (newIsTablet ? 0.6 : 1),
-        connectionDistance: newIsMobile ? 80 : (newIsTablet ? 120 : 150),
-        connectionSkip: newIsMobile ? 3 : (newIsTablet ? 2 : 1),
-        clusterCount: newIsMobile ? 3 : (newIsTablet ? 4 : 5)
+        connectionDistance: newIsMobile ? 100 : (newIsTablet ? 140 : 150), // Increased connection distance
+        connectionSkip: newIsMobile ? 2 : (newIsTablet ? 2 : 1), // Reduced skip for more connections
+        clusterCount: newIsMobile ? 4 : (newIsTablet ? 5 : 6) // More clusters
       };
-      
-      // If width changed significantly, recreate particles
-      if (Math.abs(oldWidth - canvas.width) > 200 || Math.abs(oldHeight - canvas.height) > 200) {
-        createParticles();
-      } else {
-        // Otherwise, just adjust particle positions to fit new dimensions
-        const widthRatio = canvas.width / oldWidth;
-        const heightRatio = canvas.height / oldHeight;
-        
-        particles.forEach(particle => {
-          particle.x = Math.min(canvas.width, particle.x * widthRatio);
-          particle.y = Math.min(canvas.height, particle.y * heightRatio);
-        });
-      }
+
+      // Always recreate particles on resize for better responsiveness
+      createParticles();
     };
     
-    // Debounce resize event for better performance
+    // Use a more aggressive debounce for resize
     let resizeTimeout;
     const debouncedResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(resizeCanvas, 200);
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+      // Update canvas size immediately for smooth resizing
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      // Debounce the full resize handler
+      resizeTimeout = setTimeout(() => {
+        resizeCanvas();
+      }, 100); // Reduced timeout for better responsiveness
     };
     
+    // Add resize observer for more reliable size updates
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === canvas.parentElement) {
+          debouncedResize();
+        }
+      }
+    });
+    
+    // Observe the canvas parent element
+    resizeObserver.observe(canvas.parentElement);
+    
+    // Initial setup
     window.addEventListener('resize', debouncedResize);
     resizeCanvas();
     
@@ -513,8 +534,8 @@ export default function Hero() {
           `${particle.opacity * (1 + particle.pulseFactor * 0.3)})`);
           ctx.fill();
           
-          // Connect particles within a certain distance - optimize based on device profile
-          const connectionDistance = deviceProfile.connectionDistance;
+          // Connect particles within a certain distance
+          const connDistance = deviceProfile.connectionDistance;
           const connectionSkip = deviceProfile.connectionSkip;
           
           // Skip connections based on device profile for better performance
@@ -525,13 +546,14 @@ export default function Hero() {
                 const dy = particle.y - particle2.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
-                if (distance < connectionDistance) {
+                if (distance < connDistance) {
                   ctx.beginPath();
                   ctx.moveTo(particle.x, particle.y);
                   ctx.lineTo(particle2.x, particle2.y);
-                  const alpha = 0.2 * (1 - distance / connectionDistance);
+                  const baseAlpha = isMobile ? 0.3 : 0.2; // Higher base alpha for mobile
+                  const alpha = baseAlpha * (1 - distance / connDistance);
                   ctx.strokeStyle = particle.color.replace(/[\d.]+\)$/, `${alpha})`);
-                  ctx.lineWidth = isLowPerfDevice ? 0.3 : (0.5 + (1 - distance / connectionDistance) * 1);
+                  ctx.lineWidth = isLowPerfDevice ? 0.5 : (0.8 + (1 - distance / connDistance) * 1); // Thicker lines
                   ctx.stroke();
                 }
               }
@@ -554,6 +576,7 @@ export default function Hero() {
       }
       
       window.removeEventListener('resize', debouncedResize);
+      resizeObserver.disconnect(); // Cleanup resize observer
       clearTimeout(resizeTimeout);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleClick);
