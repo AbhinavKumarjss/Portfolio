@@ -241,21 +241,28 @@ const AboutMe = () => {
               <div className="image-hover-info">
                 <h3 className="info-title">Abhinav Kumar</h3>
                 <p className="info-subtitle">Computer Science Student</p>
-                <button className="info-button">My Resume</button>
+                <a 
+                  href="https://drive.google.com/file/d/1HnMsmQobru5CVpPqG7sYD9yBiShWlzHF/view" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="info-button"
+                >
+                  My Resume
+                </a>
               </div>
               
               {/* Social links */}
               <div className="aboutme-social">
-                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="social-icon">
+                <a href="https://github.com/AbhinavKumarJss" target="_blank" rel="noopener noreferrer" className="social-icon">
                   <AiOutlineGithub />
                 </a>
-                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="social-icon">
+                <a href="https://www.linkedin.com/in/abhinav-kumar-071284256/" target="_blank" rel="noopener noreferrer" className="social-icon">
                   <FaLinkedin />
                 </a>
-                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="social-icon">
+                <a href="https://twitter.com/avi_arya_panwar" target="_blank" rel="noopener noreferrer" className="social-icon">
                   <FaTwitter />
                 </a>
-                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="social-icon">
+                <a href="https://instagram.com/aviaryapanwar" target="_blank" rel="noopener noreferrer" className="social-icon">
                   <FaInstagram />
                 </a>
               </div>

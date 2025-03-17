@@ -37,63 +37,50 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "E-Commerce Platform",
-      description: "A fully-functional e-commerce platform with product listings, cart, checkout, and payment integration. Includes user authentication and profile management.",
-      image: "https://images.unsplash.com/photo-1556742111-a301076d9d18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      link: "https://yourecommerce.com",
-      github: "https://github.com/yourusername/ecommerce",
+      title: "Watch2Gether - Video Streaming",
+      description: "A collaborative video streaming platform where users can watch videos together in real-time, chat with friends, and watch video using download links. Built with React, Socket.IO, and Express.",
+      image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+      link: "https://watch2gether-az7v.onrender.com/",
+      github: "https://github.com/AbhinavKumarjss/Watch-TogetherV2",
       category: "web",
       featured: true,
       technologies: [
         { name: "React", icon: <FaReact style={{ color: "#61DAFB" }} /> },
         { name: "Node.js", icon: <FaNodeJs style={{ color: "#339933" }} /> },
-        { name: "MongoDB", icon: <SiMongodb style={{ color: "#47A248" }} /> },
-        { name: "Express", icon: <SiExpress style={{ color: "#000000" }} /> }
+        { name: "Socket.IO", icon: <FaCode style={{ color: "#010101" }} /> },
+        { name: "TypeScript", icon: <SiTypescript style={{ color: "#3178C6" }} /> }
       ]
     },
     {
       id: 3,
-      title: "Task Management App",
-      description: "A productivity app for task management with drag-and-drop interface, time tracking, and progress visualization. Features dark mode and data export.",
-      image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      link: "https://yourtaskapp.com",
-      github: "https://github.com/yourusername/taskapp",
-      category: "mobile",
-      featured: false,
+      title: "Conferenz - Video Chat App",
+      description: "A real-time peer-to-peer video chat application enabling seamless video calls with features like room creation, audio/video controls, and easy room sharing. Built using WebRTC, Socket.IO, and Express.",
+      image: "https://images.unsplash.com/photo-1587614382346-4ec70e388b28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+      link: "https://conferenz.onrender.com/",
+      github: "https://github.com/AbhinavKumarjss/Conferenz",
+      category: "web",
+      featured: true,
       technologies: [
-        { name: "React Native", icon: <FaReact style={{ color: "#61DAFB" }} /> },
-        { name: "Firebase", icon: <SiFirebase style={{ color: "#FFCA28" }} /> },
-        { name: "Redux", icon: <SiRedux style={{ color: "#764ABC" }} /> }
+        { name: "WebRTC", icon: <FaCode style={{ color: "#333333" }} /> },
+        { name: "Node.js", icon: <FaNodeJs style={{ color: "#339933" }} /> },
+        { name: "JavaScript", icon: <FaJsSquare style={{ color: "#F7DF1E" }} /> },
+        { name: "Socket.IO", icon: <FaCode style={{ color: "#010101" }} /> }
       ]
     },
     {
       id: 4,
-      title: "AI Content Generator",
-      description: "An AI-powered content generation tool that helps users create articles, social media posts, and marketing copy. Includes sentiment analysis and SEO optimization.",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      link: "https://youraiapp.com",
-      github: "https://github.com/yourusername/aicontent",
-      category: "ai",
-      featured: false,
-      technologies: [
-        { name: "Python", icon: <FaCode style={{ color: "#3776AB" }} /> },
-        { name: "React", icon: <FaReact style={{ color: "#61DAFB" }} /> },
-        { name: "Google Cloud", icon: <SiGooglecloud style={{ color: "#4285F4" }} /> }
-      ]
-    },
-    {
-      id: 5,
-      title: "Social Media Dashboard",
-      description: "A comprehensive dashboard for social media management and analytics. Tracks engagement metrics and provides content scheduling functionality.",
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      link: "https://yourdashboard.com",
-      github: "https://github.com/yourusername/dashboard",
+      title: "VoiceNote - Voice Recording App",
+      description: "A modern voice recording application with speech-to-text and text-to-speech capabilities. Features high-quality audio capture, smart transcription, and an organized library for recordings.",
+      image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+      link: "https://voice-note-app-rho.vercel.app/",
+      github: "https://github.com/AbhinavKumarjss/VoiceNoteApp",
       category: "web",
-      featured: false,
+      featured: true,
       technologies: [
         { name: "Next.js", icon: <SiNextdotjs style={{ color: "#000000" }} /> },
         { name: "TypeScript", icon: <SiTypescript style={{ color: "#3178C6" }} /> },
-        { name: "Tailwind CSS", icon: <SiTailwindcss style={{ color: "#38B2AC" }} /> }
+        { name: "Tailwind", icon: <SiTailwindcss style={{ color: "#38B2AC" }} /> },
+        { name: "JavaScript", icon: <FaJsSquare style={{ color: "#F7DF1E" }} /> }
       ]
     }
   ];
@@ -364,15 +351,20 @@ const Projects = () => {
           trigger: projectsSectionRef.current,
           start: isMobile ? (isLandscape ? "bottom 90%" : "bottom 85%") : "bottom 100%",
           end: () => {
-            // Calculate the end point to ensure the last card is fully visible
-            const gridWidth = projectsGrid.offsetWidth;
-            const containerWidth = projectsGridContainer.offsetWidth;
-            const lastCardWidth = projectsGrid.lastElementChild.offsetWidth;
-            const endBuffer = containerWidth - lastCardWidth;
+            // Ensure elements exist before accessing their properties
+            if (!projectsGrid || !projectsGridContainer || !projectsGrid.firstElementChild) {
+              return "+=100%"; // Fallback value if elements don't exist
+            }
+
+            // Calculate the end point to ensure the card is centered
+            const containerWidth = projectsGridContainer.offsetWidth || window.innerWidth;
+            const cardWidth = projectsGrid.firstElementChild.offsetWidth || containerWidth * 0.8;
             
-            // Adjust the scroll distance based on screen size
-            const multiplier = isSmallMobile ? 0.8 : (isMobile ? 0.9 : 1);
-            return `+=${(gridWidth - endBuffer) * multiplier}`;
+            // Calculate the position that centers the card
+            const centerPosition = Math.max((containerWidth - cardWidth) / 2, 100);
+            
+            // Return the distance needed to center the card
+            return `+=${centerPosition}`;
           },
           pin: true,
           pinSpacing: true,
@@ -382,6 +374,8 @@ const Projects = () => {
           fastScrollEnd: true,
           preventOverlaps: true,
           onEnter: () => {
+            if (!projectsGrid) return;
+            
             // Position the grid at the beginning to ensure first card is visible
             gsap.set(projectsGrid, { x: 0 });
             gsap.to(projectsGrid, {
@@ -391,13 +385,15 @@ const Projects = () => {
             });
           },
           onRefresh: self => {
-            if (isMobile) {
+            if (isMobile && projectsGrid) {
               self.scroll(self.start);
               // Reset to beginning on refresh
               gsap.set(projectsGrid, { x: 0 });
             }
           },
           onUpdate: self => {
+            if (!projectsGridContainer) return;
+            
             // Update progress bar
             const progressBar = projectsGridContainer.querySelector('.scroll-progress-bar');
             if (progressBar) {
