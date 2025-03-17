@@ -107,24 +107,24 @@ const Projects = () => {
   const experienceData = [
     {
       id: 1,
-      position: "Senior Frontend Developer",
-      company: "Tech Innovations Inc.",
-      period: "2022 - Present",
-      description: "Led the frontend development team in creating responsive web applications using React, TypeScript, and modern CSS frameworks. Implemented CI/CD pipelines and improved performance metrics by 40%."
+      position: "Computer Science Student",
+      company: "State University",
+      period: "2020 - Present",
+      description: "Currently pursuing a Bachelor's degree in Computer Science with a focus on web development and user experience. Maintaining a 3.8 GPA while participating in coding clubs and hackathons."
     },
     {
       id: 2,
-      position: "Full Stack Developer",
-      company: "Digital Solutions Co.",
-      period: "2020 - 2022",
-      description: "Developed and maintained full-stack applications using the MERN stack. Collaborated with designers to implement UI/UX improvements and integrated third-party APIs for enhanced functionality."
+      position: "Web Development Intern",
+      company: "Local Tech Startup",
+      period: "Summer 2022",
+      description: "Assisted in developing responsive websites using React.js during a 3-month internship. Gained hands-on experience with modern development workflows and collaborated with designers to implement UI components."
     },
     {
       id: 3,
-      position: "Web Developer",
-      company: "Creative Agency",
-      period: "2018 - 2020",
-      description: "Created responsive websites and interactive applications for various clients. Utilized modern frontend technologies and ensured cross-browser compatibility and accessibility standards."
+      position: "Freelance Web Developer",
+      company: "Self-employed",
+      period: "2021 - Present",
+      description: "Building portfolio by creating websites for small local businesses and student organizations. Developing skills in client communication, project management, and delivering solutions that meet client needs."
     }
   ];
 
@@ -766,7 +766,7 @@ const Projects = () => {
       {/* Experience Section */}
       <section id="Experience-section" ref={experienceSectionRef}>
         <div className="section-header">
-          <h2 className="experience-title">Experience</h2>
+          <h2 className="experience-title">Education & Experience</h2>
           <div className="experience-line"></div>
                     </div>
         

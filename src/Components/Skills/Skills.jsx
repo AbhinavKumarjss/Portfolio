@@ -246,10 +246,59 @@ const Skills = () => {
 
     // For component cleanup
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      // Only kill ScrollTrigger instances related to this component, not all of them
+      const allTriggers = ScrollTrigger.getAll();
+      allTriggers.forEach(trigger => {
+        if (trigger.vars.trigger && skillContainer.contains(trigger.vars.trigger)) {
+          trigger.kill();
+        }
+      });
+      
       if (skillsTimelineRef.current) skillsTimelineRef.current.kill();
     };
-  }, [activeCategory]);
+  }, []); // Run only once on component mount, not on every category change
+
+  // Apply effects when category changes
+  useEffect(() => {
+    const skillContainer = skillsRef.current;
+    if (!skillContainer) return;
+    
+    // Wait for the DOM to update with new skills
+    setTimeout(() => {
+      // Refresh ScrollTrigger to recalculate positions for the new skill cards
+      ScrollTrigger.refresh();
+      
+      // Apply progress bar animations to new cards
+      const cards = skillContainer.querySelectorAll('.skill-card');
+      cards.forEach((card, index) => {
+        // Set the delay for the entrance animations
+        gsap.set(card, { 
+          '--delay': `${index * 0.08}s`
+        });
+        
+        // Apply progress fill animation
+        const progressFill = card.querySelector('.skill-progress-fill');
+        if (progressFill) {
+          const proficiency = parseInt(progressFill.getAttribute('data-proficiency'), 10);
+          
+          // Set initial state to width 0
+          gsap.set(progressFill, { width: 0 });
+          
+          gsap.to(progressFill, {
+            width: `${proficiency}%`,
+            duration: 1.5,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reset',
+              scrub: 0.5
+            }
+          });
+        }
+      });
+    }, 50); // Short delay to allow for DOM updates
+  }, [activeCategory]); // Re-run when category changes
 
   // Handle category change
   const handleCategoryChange = (category) => {

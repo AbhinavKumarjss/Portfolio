@@ -240,7 +240,7 @@ const AboutMe = () => {
               {/* Image hover information */}
               <div className="image-hover-info">
                 <h3 className="info-title">Abhinav Kumar</h3>
-                <p className="info-subtitle">Web Developer & Designer</p>
+                <p className="info-subtitle">Computer Science Student</p>
                 <button className="info-button">My Resume</button>
               </div>
               
@@ -269,9 +269,9 @@ const AboutMe = () => {
           
           <div className="aboutme-text" ref={textRef}>
             <div className="aboutme-bio">
-              <p>Hello! I'm <span className="highlight">Abhinav Kumar</span>, a passionate web developer and designer with a focus on creating immersive digital experiences.</p>
-              <p>With over 6 years of experience in web development, I specialize in building modern, responsive web applications using JavaScript, React, and Node.js. I'm also experienced in creating interactive 3D experiences with Three.js and WebGL.</p>
-              <p>I believe in the power of combining creative design with technical excellence to build products that not only look great but also provide exceptional user experiences.</p>
+              <p>Hello! I'm <span className="highlight">Abhinav Kumar</span>, a passionate Computer Science student with a focus on web development and interactive digital experiences.</p>
+              <p>Currently pursuing my Bachelor's degree in Computer Science, I've been developing my skills in JavaScript, React, and modern web technologies through coursework, personal projects, and a summer internship. I'm particularly interested in front-end development and creating engaging user interfaces.</p>
+              <p>I believe in continuous learning and am excited to apply my technical knowledge and creative problem-solving skills to real-world challenges as I begin my journey in the tech industry.</p>
             </div>
             
             <div className="aboutme-details" ref={detailsRef}>
@@ -281,7 +281,7 @@ const AboutMe = () => {
                 </div>
                 <div className="details-content">
                   <h3>Location</h3>
-                  <p>New York, USA</p>
+                  <p>Noida, Uttar Pradesh, India</p>
                 </div>
               </div>
               
@@ -291,7 +291,7 @@ const AboutMe = () => {
                 </div>
                 <div className="details-content">
                   <h3>Email</h3>
-                  <p>abhinav@example.com</p>
+                  <p>aviaryapanwar@gmail.com</p>
                 </div>
               </div>
               
@@ -301,21 +301,21 @@ const AboutMe = () => {
                 </div>
                 <div className="details-content">
                   <h3>Phone</h3>
-                  <p>+1 (123) 456-7890</p>
+                  <p>+91 7505206429</p>
                 </div>
-      </div>
-    
+              </div>
+              
               <div className="details-item">
                 <div className="details-icon">
                   <FaCode />
                 </div>
                 <div className="details-content">
-                  <h3>Experience</h3>
-                  <p>6+ Years</p>
+                  <h3>Education</h3>
+                  <p>Computer Science - 3rd Year</p>
                 </div>
-        </div>
-        </div>
-        </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
